@@ -5,7 +5,20 @@ window.addEventListener('DOMContentLoaded', function () {
     menu.addEventListener('click', (e) => {
         e.preventDefault;
         nav.classList.toggle('active');
-    }); 
+    });
+  
+    const anchors = document.querySelectorAll('a[href*="#"]');
+
+    for (let anchor of anchors) {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const blockID = anchor.getAttribute('href');
+            document.querySelector('' + blockID).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    }
 });
 $(document).ready(function(){
     $('.project__wrapper').slick({
